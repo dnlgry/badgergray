@@ -1,46 +1,94 @@
+```html
 <!DOCTYPE HTML>
 <!--
 	Eventually by HTML5 UP
 	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Free for personal and commercial use under the CCA 3.0 license
+	(html5up.net/license)
 -->
 <html>
 	<head>
-		<title>Eventually by HTML5 UP</title>
+		<title>Badger Gray</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="Badger Gray" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+
 	<body class="is-preload">
 
 		<!-- Header -->
-			<header id="header">
-				<h1>Eventually</h1>
-				<p>A simple template for telling the world when you'll launch<br />
-				your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p>
-			</header>
+		<header id="header">
+			<h1>Hello there.</h1>
+			<p>
+				If you've been referred here, you're in the right place.<br />
+				Send me a message with some details and I'll be in touch.
+			</p>
+		</header>
 
-		<!-- Signup Form -->
-			<form id="signup-form" method="post" action="#">
-				<input type="email" name="email" id="email" placeholder="Email Address" />
-				<input type="submit" value="Sign Up" />
-			</form>
+		<!-- Contact Form -->
+		<form id="signup-form" method="post" action="#">
+
+			<input
+				type="email"
+				name="email"
+				id="email"
+				placeholder="Your email address"
+				aria-label="Your email address"
+				required
+			/>
+
+			<textarea
+				name="message"
+				id="message"
+				placeholder="A short message"
+				aria-label="A short message"
+				rows="4"
+				required
+			></textarea>
+
+			<input
+				type="text"
+				name="human-check"
+				id="human-check"
+				placeholder="What is 3 + 4?"
+				aria-label="Human verification"
+				required
+			/>
+
+			<input type="submit" value="Send" />
+
+			<p id="form-message" style="display:none;"></p>
+
+		</form>
 
 		<!-- Footer -->
-			<footer id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; Untitled.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
-				</ul>
-			</footer>
+		<footer id="footer">
+			<ul class="copyright">
+				<li>&copy; Badger Gray.</li>
+				<li>Design adapted from <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/main.js"></script>
+		<!-- Human check -->
+		<script>
+			const form = document.getElementById('signup-form');
+			const humanCheck = document.getElementById('human-check');
+			const formMessage = document.getElementById('form-message');
+
+			form.addEventListener('submit', function(event) {
+				if (humanCheck.value.trim() !== '7') {
+					event.preventDefault();
+					formMessage.textContent = 'Please check the answer above.';
+					formMessage.style.display = 'block';
+					humanCheck.focus();
+				}
+			});
+		</script>
+
+		<!-- Template script -->
+		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
+```
