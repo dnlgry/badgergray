@@ -37,10 +37,10 @@
 
 			#contact-button {
 				margin-top: 1.5rem;
-				font-size: 1.15rem;
+				font-size: 1.0rem;
 				padding: 0 1.6rem;
-				height: 3.2rem;
-				line-height: 3.2rem;
+				height: 2.8rem;
+				line-height: 2.8rem;
 			}
 
 			#contact-modal {
@@ -121,14 +121,14 @@
 
 		<!-- Header -->
 		<header id="header">
-			<h1>Hello there…</h1>
+			<h1>Hello there.</h1>
 
 			<p>
 				If you've been referred here, then you're in the right place.<br />
-				Send me a short message and I'll be in touch.
+				Send a message below and I'll be in touch.
 			</p>
 
-			<button id="contact-button" type="button">Reach out…</button>
+			<button id="contact-button" type="button">Contact</button>
 		</header>
 
 		<!-- Contact Modal -->
@@ -145,7 +145,7 @@
 					&times;
 				</button>
 
-				<h2 id="contact-title">Reach out…</h2>
+				<h2 id="contact-title">Send a message…</h2>
 
 				<form
 					id="contact-form"
@@ -157,7 +157,7 @@
 						type="text"
 						name="contact"
 						id="contact"
-						placeholder="Leave your email address or phone number here"
+						placeholder="Email address or phone number…"
 						aria-label="Email address or phone number"
 						required
 					/>
@@ -165,7 +165,7 @@
 					<textarea
 						name="message"
 						id="message"
-						placeholder="Leave a short message here with some details, including your referee, and I'll be in touch soon..."
+						placeholder="Leave a brief message with some details…"
 						aria-label="Your message"
 						rows="5"
 						required
@@ -249,7 +249,7 @@
 
 					if (response.ok) {
 						form.hidden = true;
-						status.innerHTML = "Thanks — your message has been sent.<br>I'll be in touch.";
+						status.innerHTML = "Thank you. Your message has been sent.<br>I'll be in touch soon.";
 						status.hidden = false;
 					} else {
 						throw new Error('Submission failed');

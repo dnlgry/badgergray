@@ -532,7 +532,7 @@ a {
 
 strong, b {
 
-  color: #f5ede3;
+  color: rgba(245, 237, 227, 0.82);
 
   font-weight: 700; }
 
@@ -552,7 +552,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
 
-  color: #f5ede3;
+  color: rgba(245, 237, 227, 0.82);
 
   font-family: "Fraunces", serif;
 
@@ -980,7 +980,7 @@ form {
 
 label {
 
-  color: #f5ede3;
+  color: #e8dccd;
 
   display: block;
 
@@ -1236,7 +1236,7 @@ select {
 
   select option {
 
-    color: #f5ede3;
+    color: #e8dccd;
 
     background: #000; }
 
@@ -1376,7 +1376,7 @@ input[type="radio"] {
 
     border-color: #263f56;
 
-    color: #f5ede3;
+    color: #e8dccd;
 
     content: '\f00c'; }
 
@@ -1477,7 +1477,7 @@ button,
 
   border: 0;
 
-  color: #ffffff !important;
+  color: #e8dccd !important;
 
   cursor: pointer;
 
@@ -1563,6 +1563,8 @@ button,
 
   font-size: 3.25em;
 
+  color: rgba(255, 255, 255, 0.78);
+  
   margin: 0 0 0.55em 0; }
 
 
@@ -1570,6 +1572,8 @@ button,
 #header p {
 
   font-size: 1.35em;
+
+  color: rgba(255, 255, 255, 0.72);
 
   line-height: 1.65em; }
 
