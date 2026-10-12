@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE HTML>
 <!--
 	Eventually by HTML5 UP
@@ -12,83 +11,261 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="Badger Gray" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
 		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<style>
+			body,
+			input,
+			textarea,
+			button {
+				font-family: "Fraunces", serif;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-family: "Fraunces", serif;
+			}
+
+			#contact-button {
+				margin-top: 1.5rem;
+				font-size: 1.15rem;
+				padding: 0 1.6rem;
+				height: 3.2rem;
+				line-height: 3.2rem;
+			}
+
+			#contact-modal {
+				display: flex;
+				position: fixed;
+				z-index: 1000;
+				inset: 0;
+				background: rgba(0, 0, 0, 0);
+				align-items: center;
+				justify-content: center;
+				padding: 1.5rem;
+
+				opacity: 0;
+				visibility: hidden;
+				pointer-events: none;
+
+				transition:
+					opacity 0.35s ease,
+					background-color 0.35s ease,
+					visibility 0.35s;
+			}
+
+			#contact-modal.active {
+				opacity: 1;
+				visibility: visible;
+				pointer-events: auto;
+				background: rgba(0, 0, 0, 0.65);
+			}
+
+			.modal-content {
+				position: relative;
+				width: 100%;
+				max-width: 500px;
+				padding: 2rem;
+				background: rgba(30, 30, 30, 0.95);
+				border-radius: 6px;
+
+				opacity: 0;
+				transform: translateY(12px) scale(0.985);
+				transition:
+					opacity 0.35s ease,
+					transform 0.35s ease;
+			}
+			#contact-modal.active .modal-content {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+			.modal-content input,
+			.modal-content textarea {
+				width: 100%;
+				margin-bottom: 1rem;
+			}
+
+			.modal-content textarea {
+				resize: vertical;
+			}
+
+			#close-modal {
+				position: absolute;
+				top: 0.6rem;
+				right: 0.8rem;
+				border: 0;
+				background: none;
+				color: #fff;
+				font-size: 1.8rem;
+				line-height: 1;
+				cursor: pointer;
+			}
+
+			#form-status {
+				margin: 0;
+				line-height: 1.6;
+			}
+		</style>
 	</head>
 
 	<body class="is-preload">
 
 		<!-- Header -->
 		<header id="header">
-			<h1>Hello there.</h1>
+			<h1>Hello there…</h1>
+
 			<p>
-				If you've been referred here, you're in the right place.<br />
-				Send me a message with some details and I'll be in touch.
+				If you've been referred here, then you're in the right place.<br />
+				Send me a short message and I'll be in touch.
 			</p>
+
+			<button id="contact-button" type="button">Reach out…</button>
 		</header>
 
-		<!-- Contact Form -->
-		<form id="signup-form" method="post" action="#">
+		<!-- Contact Modal -->
+		<div id="contact-modal" aria-hidden="true">
 
-			<input
-				type="email"
-				name="email"
-				id="email"
-				placeholder="Your email address"
-				aria-label="Your email address"
-				required
-			/>
+			<div
+				class="modal-content"
+				role="dialog"
+				aria-modal="true"
+				aria-labelledby="contact-title"
+			>
 
-			<textarea
-				name="message"
-				id="message"
-				placeholder="A short message"
-				aria-label="A short message"
-				rows="4"
-				required
-			></textarea>
+				<button id="close-modal" type="button" aria-label="Close">
+					&times;
+				</button>
 
-			<input
-				type="text"
-				name="human-check"
-				id="human-check"
-				placeholder="What is 3 + 4?"
-				aria-label="Human verification"
-				required
-			/>
+				<h2 id="contact-title">Reach out…</h2>
 
-			<input type="submit" value="Send" />
+				<form
+					id="contact-form"
+					method="post"
+					action="https://formspree.io/f/mppqlbob"
+				>
 
-			<p id="form-message" style="display:none;"></p>
+					<input
+						type="text"
+						name="contact"
+						id="contact"
+						placeholder="Leave your email address or phone number here"
+						aria-label="Email address or phone number"
+						required
+					/>
 
-		</form>
+					<textarea
+						name="message"
+						id="message"
+						placeholder="Leave a short message here with some details, including your referee, and I'll be in touch soon..."
+						aria-label="Your message"
+						rows="5"
+						required
+					></textarea>
+
+					<input
+						id="send-button"
+						type="submit"
+						value="Send"
+					/>
+
+				</form>
+
+				<p id="form-status" hidden></p>
+
+			</div>
+		</div>
 
 		<!-- Footer -->
 		<footer id="footer">
 			<ul class="copyright">
-				<li>&copy; Badger Gray.</li>
-				<li>Design adapted from <a href="https://html5up.net">HTML5 UP</a></li>
+				<li>&copy; Badger Gray 2026</li>
+				<li>
+					with thanks to
+					<a href="https://html5up.net">HTML5 UP</a>
+				</li>
 			</ul>
 		</footer>
 
-		<!-- Human check -->
+		<!-- Scripts -->
 		<script>
-			const form = document.getElementById('signup-form');
-			const humanCheck = document.getElementById('human-check');
-			const formMessage = document.getElementById('form-message');
+			const modal = document.getElementById('contact-modal');
+			const openButton = document.getElementById('contact-button');
+			const closeButton = document.getElementById('close-modal');
+			const form = document.getElementById('contact-form');
+			const status = document.getElementById('form-status');
+			const sendButton = document.getElementById('send-button');
 
-			form.addEventListener('submit', function(event) {
-				if (humanCheck.value.trim() !== '7') {
-					event.preventDefault();
-					formMessage.textContent = 'Please check the answer above.';
-					formMessage.style.display = 'block';
-					humanCheck.focus();
+			function openModal() {
+				modal.classList.add('active');
+				modal.setAttribute('aria-hidden', 'false');
+				document.getElementById('contact').focus();
+			}
+
+			function closeModal() {
+				modal.classList.remove('active');
+				modal.setAttribute('aria-hidden', 'true');
+			}
+
+			openButton.addEventListener('click', openModal);
+			closeButton.addEventListener('click', closeModal);
+
+			modal.addEventListener('click', function (event) {
+				if (event.target === modal) {
+					closeModal();
+				}
+			});
+
+			document.addEventListener('keydown', function (event) {
+				if (event.key === 'Escape' && modal.classList.contains('active')) {
+					closeModal();
+				}
+			});
+
+			form.addEventListener('submit', async function (event) {
+				event.preventDefault();
+
+				sendButton.disabled = true;
+				sendButton.value = 'Sending...';
+
+				const formData = new FormData(form);
+
+				try {
+					const response = await fetch(form.action, {
+						method: 'POST',
+						body: formData,
+						headers: {
+							'Accept': 'application/json'
+						}
+					});
+
+					if (response.ok) {
+						form.hidden = true;
+						status.innerHTML = "Thanks — your message has been sent.<br>I'll be in touch.";
+						status.hidden = false;
+					} else {
+						throw new Error('Submission failed');
+					}
+
+				} catch (error) {
+					status.textContent = 'Something went wrong. Please try again.';
+					status.hidden = false;
+
+					sendButton.disabled = false;
+					sendButton.value = 'Send';
 				}
 			});
 		</script>
 
-		<!-- Template script -->
 		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
-```
